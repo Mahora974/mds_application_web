@@ -17,5 +17,4 @@ jobs:
               script: |
                 cd /var/mds_application_web
                 git pull
-                php artisan migrate
-                php artisan config:clear
+                npm run build
