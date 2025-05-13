@@ -28,7 +28,7 @@ defineProps({
 
 <template>
     <div class="item">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3wxJ0c-jC6VcDASO9aiDWD9zWAeJLKrS5gg&s" width="200px" height="200px"/>
+        <img :src="img" />
         <div class="details">
             <h3>{{ label }}</h3>
             <div >

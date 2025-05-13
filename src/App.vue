@@ -5,7 +5,7 @@ const img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3wxJ0c-jC6Vc
 
 <template>
   <main>
-    <ProductCard img="/test" price="44,00" stockage="200" description="Lorem Ipsum" label="Produit" />
+    <ProductCard :img="img" :price="44.00" :stockage="200" description="Lorem Ipsum" label="Produit" />
   </main>
 </template>
 
