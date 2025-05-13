@@ -27,66 +27,19 @@ defineProps({
 </script>
 
 <template>
-    <div class="item">
+    <div class="md:grid md:grid-cols-2 gap-2 rounded-3xl p-5 shadow-lg dark:shadow-[#157A6E]">
         <img :src="img" />
-        <div class="details">
-            <h3>{{ label }}</h3>
-            <div >
-                <p><strong>{{ price }} €</strong></p>
-                <p><strong>{{ stockage }}</strong></p>
+        <div class="details flex flex-col">
+            <h3 class="text-(--color-heading) text-lg">{{ label }}</h3>
+            <div class="flex flex-row justify-between" >
+                <p class="text-right text-(--color-heading)">{{ price }} €</p>
+                <p class="text-right text-(--color-heading)">En stock : {{ stockage }}</p>
             </div>
             <p>{{ description }}</p> 
         </div>
-        <div class="actions">
+        <div class="flex justify-between col-start-1 col-end-3">
             <EditButton />
             <DeleteButton />
         </div>
     </div>
 </template>
-
-<style scoped>
-    .item {
-        border: #499F68 solid 1px ;
-        border-radius: 25px;
-        padding: 5%;
-        margin-top: 2rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2%;
-    }
-
-    .details {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .details div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .actions {
-        display: flex;
-        justify-content: space-between;
-        grid-column-end: span 2;
-    }
-
-    .actions button {
-        border: none;
-        border-radius: 3px;
-    }
-
-    .edit {
-        background-color: #499F68;
-        color: white;
-    }
-
-    h3 {
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-bottom: 0.4rem;
-        color: var(--color-heading);
-    }
-
-</style>  

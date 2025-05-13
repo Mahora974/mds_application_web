@@ -1,14 +1,3 @@
 <template>
-    <button class="edit" ><strong>Modifier</strong></button>
+    <button class="rounded-sm text-white bg-[#499F68] px-2" ><strong>Modifier</strong></button>
 </template>
-
-
-<style scoped>
-    .edit {
-        border: none;
-        border-radius: 3px;
-        background-color: #499F68;
-        color: white;
-        padding: 0.5%  2%;
-    }
-</style>
