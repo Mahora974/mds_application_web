@@ -17,4 +17,5 @@ jobs:
               script: |
                 cd /var/mds_application_web
                 git pull
+                npm i
                 npm run build

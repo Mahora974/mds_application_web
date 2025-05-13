@@ -1,5 +1,5 @@
 <script setup>
-import  EditButton  from "./EditButton.vue";
+import  PrimaryButton  from "./PrimaryButton.vue";
 import DeleteButton from "./DeleteButton.vue";
 
 defineProps({
@@ -15,8 +15,8 @@ defineProps({
         type: Number,
         required: true,
     },
-    stockage: {
-        type: Number,
+    category: {
+        type: String,
         required: true,
     },
     description: {
@@ -27,18 +27,20 @@ defineProps({
 </script>
 
 <template>
-    <div class="md:grid md:grid-cols-2 gap-2 rounded-3xl p-5 shadow-lg dark:shadow-[#157A6E]">
-        <img :src="img" />
-        <div class="details flex flex-col">
-            <h3 class="text-(--color-heading) text-lg">{{ label }}</h3>
-            <div class="flex flex-row justify-between" >
-                <p class="text-right text-(--color-heading)">{{ price }} €</p>
-                <p class="text-right text-(--color-heading)">En stock : {{ stockage }}</p>
+    <div class="flex flex-col gap-2 justify-between rounded-3xl p-5 shadow-lg dark:shadow-[#157A6E]">
+        <div class="lg:flex-row gap-2">
+            <img :src="img" class="max-h-50 md:max-w-50 rounded-xl" />
+            <div class="flex flex-col w-full flex-1">
+                <h3 class="line-clamp-2 overflow-hidden text-ellipsis text-(--color-heading) break-* text-lg">{{ label }}</h3>
+                <div class="flex flex-row justify-between" >
+                    <p class="text-right text-(--color-heading)">{{ price }} €</p>
+                    <p class="text-right text-(--color-heading)">{{ category }}</p>
+                </div>
+                <p class="line-clamp-4 overflow-hidden text-ellipsis break-words">{{ description }}</p>
             </div>
-            <p>{{ description }}</p> 
         </div>
         <div class="flex justify-between col-start-1 col-end-3">
-            <EditButton />
+            <PrimaryButton text="Modifier" />
             <DeleteButton />
         </div>
     </div>

@@ -1,13 +1,28 @@
 <script setup>
-import ProductCard from './components/ProductCard.vue'
-const img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3wxJ0c-jC6VcDASO9aiDWD9zWAeJLKrS5gg&s'
+import { ref, computed } from 'vue'
+import Home from './Home.vue'
+import NotFound from './NotFound.vue'
+
+const routes = {
+  '/': Home,
+}
+
+const currentPath = ref(window.location.hash)
+
+window.addEventListener('hashchange', () => {
+  currentPath.value = window.location.hash
+})
+
+const currentView = computed(() => {
+  return routes[currentPath.value.slice(1) || '/'] || NotFound
+})
+
 </script>
 
 <template>
-  <main>
-    <ProductCard :img="img" :price="44.00" :stockage="200" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor metus quis augue elementum, a tempor arcu pellentesque." label="Produit" />
-  </main>
+  <header class="bg-[#157A6E] px-5">
+    <a href="#/"><img alt="Vue logo" class="logo" src="./assets/logo.svg" width="25" height="25" /></a>
+  </header>
+  
+  <component class="m-4" :is="currentView" />
 </template>
-
-<style scoped>
-</style>
