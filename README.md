@@ -1,6 +1,6 @@
 # mds_application_web
 
-TP d'application web. [Consignes](https://github.com/Leroy-design/developpement-web-app/blob/main/FrontEnd%20description%20projet.md)
+TP d'application web. [Consignes](https://github.com/Leroy-design/developpement-web-app/blob/main)
 
 
 This template should help get you started developing with Vue 3 in Vite.

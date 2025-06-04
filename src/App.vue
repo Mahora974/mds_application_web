@@ -1,10 +1,12 @@
 <script setup>
 import { ref, computed } from 'vue'
 import Home from './Home.vue'
+import Add from './Add.vue'
 import NotFound from './NotFound.vue'
 
 const routes = {
   '/': Home,
+  '/add': Add
 }
 
 const currentPath = ref(window.location.hash)
