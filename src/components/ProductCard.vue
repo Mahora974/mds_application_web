@@ -28,8 +28,8 @@ defineProps({
 
 <template>
     <div class="flex flex-col gap-2 justify-between rounded-3xl p-5 shadow-lg dark:shadow-[#157A6E]">
-        <div class="lg:flex-row gap-2">
-            <img :src="img" class="max-h-50 md:max-w-50 rounded-xl" />
+        <div class="lg:flex lg:flex-row gap-2">
+            <img :src="img" class="max-h-40 md:max-w-50 rounded-xl" />
             <div class="flex flex-col w-full flex-1">
                 <h3 class="line-clamp-2 overflow-hidden text-ellipsis text-(--color-heading) break-* text-lg">{{ label }}</h3>
                 <div class="flex flex-row justify-between" >
