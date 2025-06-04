@@ -1,13 +1,18 @@
 <script setup async>
-import PrimaryButton from './components/PrimaryButton.vue';
-import ProductCard from './components/ProductCard.vue';
 import { ref, onMounted } from 'vue';
-import SuccessAlert from './components/SuccessAlert.vue';
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
+import PrimaryButton from './PrimaryButton.vue';
+import ProductCard from './ProductCard.vue';
+import SuccessAlert from './SuccessAlert.vue';
+import DangerAlert from './DangerAlert.vue';
 
 const route = useRoute()
-const successMessage = computed(() => route.query.success)
+const successMessage = computed(() =>{
+    if (route !== undefined){
+        route.query.success
+    }
+})
 const errorMessages = ref([])
 
 

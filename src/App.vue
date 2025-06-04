@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
-import Home from './Home.vue'
-import Add from './Add.vue'
+import Home from './components/Home.vue'
+import Add from './components/Add.vue'
 
 </script>
 

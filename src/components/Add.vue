@@ -1,8 +1,9 @@
 <script setup async>
-import DangerAlert from './components/DangerAlert.vue';
-import PrimaryButton from './components/PrimaryButton.vue';
+
 import { ref } from 'vue';
 import {  useRouter } from 'vue-router'
+import DangerAlert from './DangerAlert.vue';
+import PrimaryButton from './PrimaryButton.vue';
 
 const router = useRouter()
 
@@ -54,7 +55,7 @@ async function addProduct(){
             <div v-if="step == 1" class="flex flex-col gap-4 m-4">
                 <div class="flex flex-col">
                     <label>Nom du produit</label>
-                    <input v-model="product.label" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />
+                    <input v-model="product.label" id="label" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />
                 </div>
                 <div class="md-flex gap-2">
                     <div class="flex flex-col grow">    
@@ -63,7 +64,7 @@ async function addProduct(){
                     </div>
                     <div class="flex flex-col grow">
                         <label>Catégorie</label>
-                        <input v-model="product.category" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />
+                        <input v-model="product.category" id="category" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />
                     </div>
                 </div>
                 <div class="flex justify-end col-start-1 col-end-3">
@@ -81,7 +82,7 @@ async function addProduct(){
                 </div>
                 <div class="flex justify-between col-start-1 col-end-3">
                     <PrimaryButton text="Précédent" @click="step--"/>
-                    <PrimaryButton text="Enregistrer" @click="addProduct"/>
+                    <PrimaryButton text="Enregistrer" id="add" @click="addProduct"/>
                 </div>
             </div>
         </form>
