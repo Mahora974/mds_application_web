@@ -8,6 +8,7 @@ import { computed } from 'vue'
 
 const route = useRoute()
 const successMessage = computed(() => route.query.success)
+const errorMessages = ref([])
 
 
 const products = ref([]);
@@ -18,7 +19,7 @@ onMounted(async () => {
         const data = await res.json();
         products.value = data;
     } catch (error) {
-        console.error("Erreur lors de la récupération des produits :", error);
+        errorMessages.values.push("Erreur lors de la récupération des produits :", error);
     }
 });
 </script>
@@ -26,6 +27,9 @@ onMounted(async () => {
 <template>
     <div class="m-4">
         <SuccessAlert v-if="successMessage" :text="successMessage" />
+        <div v-if="errorMessages">
+            <DangerAlert v-for="error of errorMessages" :text="error" />
+        </div>
         
         <header class="sm:flex justify-between">
             <h1 class="text-xl text-(--color-heading) font-bold">Répertoire des produits</h1>

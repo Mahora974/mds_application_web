@@ -37,7 +37,6 @@ async function addProduct(){
         errors.value.push('Erreur lors de l\'enregitrement du produit. Si le problème persite, contactez le support')
     } 
     const response = await res.json();
-    console.log(response.title)
     router.push({ name: 'home', query: { success: `Le produit ${response.title} a été créé avec succès ! `  } });
 }
 
