@@ -33,7 +33,7 @@ onMounted(async () => {
         
         <header class="sm:flex justify-between">
             <h1 class="text-xl text-(--color-heading) font-bold">Répertoire des produits</h1>
-            <PrimaryButton text="Ajouter" action="#/add"/>
+            <PrimaryButton text="Ajouter" action="add"/>
         </header>
         <section class="md:grid md:grid-cols-3 md:gap-3">
             <ProductCard v-for="product in products" :key="product.id" :img="product.image" :price="product.price" :label="product.title" :description="product.description" :category="product.category"/>

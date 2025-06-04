@@ -12,5 +12,5 @@ defineProps({
 })
 </script>
 <template>
-    <a :href="action"><button class="cursor-pointer rounded-sm text-white bg-[#499F68] h-10 px-2" ><strong>{{text}}</strong></button></a>
+  <router-link :to="{name: action}"><button type="button" class="cursor-pointer rounded-sm text-white bg-[#499F68] h-10 px-2" ><strong>{{text}}</strong></button></router-link>
 </template>
