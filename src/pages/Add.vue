@@ -1,9 +1,9 @@
 <script setup>
 
+import DangerAlert from '@/components/DangerAlert.vue';
+import PrimaryButton from '@/components/PrimaryButton.vue';
 import { ref } from 'vue';
 import {  useRouter } from 'vue-router'
-import DangerAlert from './DangerAlert.vue';
-import PrimaryButton from './PrimaryButton.vue';
 
 const router = useRouter()
 const emit = defineEmits(['submit']);

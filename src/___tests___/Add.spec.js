@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 
 import { mount } from "@vue/test-utils";
-import Add from "@/components/Add.vue";
+import Add from "@/pages/Add.vue";
 import router from "@/router";
 
 describe("Add", ()=>{
