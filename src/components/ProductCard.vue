@@ -1,6 +1,8 @@
 <script setup>
 import  PrimaryButton  from "./PrimaryButton.vue";
-import DeleteButton from "./DeleteButton.vue";
+import DeleteButton from "./DangerButton.vue";
+import ConfimCard from "./ConfimCard.vue";
+import { ref } from "vue";
 
 const props = defineProps({
     id: {
@@ -28,6 +30,9 @@ const props = defineProps({
         required: true,
     },
 })
+const open = ref(false)
+
+
 </script>
 
 <template>
@@ -45,7 +50,20 @@ const props = defineProps({
         </RouterLink>
         <div class="flex justify-between col-start-1 col-end-3">
             <PrimaryButton type="button" text="Modifier" />
-            <DeleteButton />
+            <DeleteButton @click="open = true" />
         </div>
     </div>
+
+    <ConfimCard :id="id" :name="label" :show="open" @close="open=false" @deleted="(message)=>$emit('delete',message)"/>
 </template>
+
+<style scoped>
+.modal {
+    position: fixed;
+    z-index: 999;
+    top: 20%;
+    left: 50%;
+    width: 300px;
+    margin-left: -150px;
+}
+</style>
