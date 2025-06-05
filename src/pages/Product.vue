@@ -1,10 +1,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router'
 import ProductCard from '@/components/ProductCard.vue';
-import PrimaryButton from '@/components/PrimaryButton.vue';
 import DangerAlert from '@/components/DangerAlert.vue';
 
+let successMessage = ref('');
 const props = defineProps({
     id: {
         type: Number,
@@ -29,10 +28,11 @@ onMounted(async () => {
 
 <template>
     <div class="m-4">
+        <SuccessAlert v-if="successMessage" :text="successMessage" />
         <div v-if="errorMessages">
             <DangerAlert v-for="error of errorMessages" :text="error" />
         </div>
-        <ProductCard :id="product.id" :img="product.image" :price="product.price" :label="product.title" :description="product.description" :category="product.category"/>
+        <ProductCard @delete="(message)=>successMessage = message" :id="product.id" :img="product.image" :price="product.price" :label="product.title" :description="product.description" :category="product.category"/>
         
     </div>
 </template>
