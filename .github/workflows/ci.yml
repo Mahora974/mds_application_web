@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
     test:
-      if: github.ref == 'refs/heads/main' or github.ref == 'refs/heads/dev'
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
