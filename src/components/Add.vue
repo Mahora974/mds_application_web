@@ -1,10 +1,12 @@
-<script setup async>
-import DangerAlert from './components/DangerAlert.vue';
-import PrimaryButton from './components/PrimaryButton.vue';
+<script setup>
+
 import { ref } from 'vue';
 import {  useRouter } from 'vue-router'
+import DangerAlert from './DangerAlert.vue';
+import PrimaryButton from './PrimaryButton.vue';
 
 const router = useRouter()
+const emit = defineEmits(['submit']);
 
 let product = ref({
     label:'',
@@ -17,8 +19,7 @@ let product = ref({
 let step = ref(1);
 let errors = ref([]);
 
-async function addProduct(){
-    event.preventDefault()
+const addProduct = async () => {
     let data = {
         title:product.value.label,
         price:product.value.price,
@@ -34,9 +35,11 @@ async function addProduct(){
     };
     const res = await fetch("https://fakestoreapi.com/products", requestOptions);
     if (!res.ok) {
-        errors.value.push('Erreur lors de l\'enregitrement du produit. Si le problème persite, contactez le support')
+        errors.value.push('Erreur lors de l\'enregitrement du produit. Si le problème persite, contactez le support');
+        return;
     } 
     const response = await res.json();
+    emit('submit', { ...response })
     router.replace({ name: 'home', query: { success: `Le produit ${response.title} a été créé avec succès !`} });
 }
 
@@ -50,11 +53,11 @@ async function addProduct(){
         <div v-if="errors">
             <DangerAlert v-for="error of errors" :text="error" />
         </div>
-        <form>
+        <form @submit.prevent="addProduct">
             <div v-if="step == 1" class="flex flex-col gap-4 m-4">
                 <div class="flex flex-col">
                     <label>Nom du produit</label>
-                    <input v-model="product.label" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />
+                    <input v-model="product.label" id="label" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />
                 </div>
                 <div class="md-flex gap-2">
                     <div class="flex flex-col grow">    
@@ -63,11 +66,11 @@ async function addProduct(){
                     </div>
                     <div class="flex flex-col grow">
                         <label>Catégorie</label>
-                        <input v-model="product.category" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />
+                        <input v-model="product.category" id="category" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />
                     </div>
                 </div>
                 <div class="flex justify-end col-start-1 col-end-3">
-                    <PrimaryButton text="Suivant" @click="step++" />
+                    <PrimaryButton type="button" text="Suivant" @click="step++" />
                 </div>
             </div>
             <div v-if="step == 2" class="flex flex-col gap-4 m-4">
@@ -80,8 +83,8 @@ async function addProduct(){
                     <textarea v-model="product.description" class="rounded-xl p-3 h-[33vh] inset-shadow-sm dark:inset-shadow-[#157A6E]"></textarea>
                 </div>
                 <div class="flex justify-between col-start-1 col-end-3">
-                    <PrimaryButton text="Précédent" @click="step--"/>
-                    <PrimaryButton text="Enregistrer" @click="addProduct"/>
+                    <PrimaryButton type="button" text="Précédent" id="previous" @click="step--"/>
+                    <PrimaryButton type="submit" text="Enregistrer" id="add"/>
                 </div>
             </div>
         </form>

@@ -1,13 +1,17 @@
 <script setup async>
-import PrimaryButton from './components/PrimaryButton.vue';
-import ProductCard from './components/ProductCard.vue';
 import { ref, onMounted } from 'vue';
-import SuccessAlert from './components/SuccessAlert.vue';
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
+import PrimaryButton from './PrimaryButton.vue';
+import ProductCard from './ProductCard.vue';
+import SuccessAlert from './SuccessAlert.vue';
+import DangerAlert from './DangerAlert.vue';
 
 const route = useRoute()
-const successMessage = computed(() => route.query.success)
+let successMessage = ref('')
+if (route !== undefined){
+    successMessage.value =  route.query.success
+}
 const errorMessages = ref([])
 
 
@@ -33,7 +37,7 @@ onMounted(async () => {
         
         <header class="sm:flex justify-between">
             <h1 class="text-xl text-(--color-heading) font-bold">Répertoire des produits</h1>
-            <PrimaryButton text="Ajouter" action="add"/>
+            <PrimaryButton type="button" text="Ajouter" action="add"/>
         </header>
         <section class="md:grid md:grid-cols-3 md:gap-3">
             <ProductCard v-for="product in products" :key="product.id" :img="product.image" :price="product.price" :label="product.title" :description="product.description" :category="product.category"/>
