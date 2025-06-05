@@ -3,7 +3,17 @@ name: CI
 on: [push]
 
 jobs:
+    test:
+      if: github.ref == 'refs/heads/main' or github.ref == 'refs/heads/dev'
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Install dependencies
+          run: npm i
+        - name: Run tests
+          run: npm test
     deploy:
+        needs: test
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
         steps:
