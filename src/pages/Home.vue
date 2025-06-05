@@ -49,7 +49,7 @@ onMounted(async () => {
             <PrimaryButton type="button" text="Ajouter" action="add"/>
         </header>
         <section class="md:grid md:grid-cols-3 md:gap-3">
-            <ProductCard v-for="product in products" :key="product.id" :id="product.id" :img="product.image" :price="product.price" :label="product.title" :description="product.description" :category="product.category"/>
+            <ProductCard v-for="product in products" @delete="(message)=>successMessage = message" :key="product.id" :id="product.id" :img="product.image" :price="product.price" :label="product.title" :description="product.description" :category="product.category"/>
         </section>
     </div>
 </template>
