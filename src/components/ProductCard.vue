@@ -40,7 +40,7 @@ defineProps({
             </div>
         </div>
         <div class="flex justify-between col-start-1 col-end-3">
-            <PrimaryButton text="Modifier" />
+            <PrimaryButton type="button" text="Modifier" />
             <DeleteButton />
         </div>
     </div>
