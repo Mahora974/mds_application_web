@@ -15,17 +15,12 @@ const props = defineProps({
 const errorMessages = ref([])
 const product = ref({});
 
-async function fetchProduct() {
-    const res = await fetch(`https://fakestoreapi.com/products/${props.id}`);
-    const data = await res.json();
-    product.value = data;
-}
-
-const lastFetch = localStorage.getItem('lastFetch');
 
 onMounted(async () => {
     try {   
-        product.value = await fetchProduct();
+        const res = await fetch(`https://fakestoreapi.com/products/${props.id}`);
+        const data = await res.json();
+        product.value = data;
     } catch (error) {
         errorMessages.value.push(`Erreur lors de la récupération du produit : ${error}`);
     }
