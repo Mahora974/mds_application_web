@@ -64,7 +64,7 @@ const editProduct = async () => {
 <template>
     <div class="m-4">
         <header>
-            <h1 class="text-xl text-(--color-heading) font-bold">Ajouter un produit</h1>
+            <h1 class="text-xl text-(--color-heading) font-bold">Modifier un produit</h1>
         </header>
         <div v-if="errors">
             <DangerAlert v-for="error of errors" :text="error" />
@@ -85,7 +85,7 @@ const editProduct = async () => {
                 </div>
             </div>
             <div class="md:flex gap-2">
-                <div class="w-1/6">
+                <div class="md:w-1/6 w-1/4 m-1">
                     <img :src="product.image" >
                 </div>
                 <div class="grow">
