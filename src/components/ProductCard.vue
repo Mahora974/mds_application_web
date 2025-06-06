@@ -36,7 +36,7 @@ const open = ref(false)
 </script>
 
 <template>
-    <div class="flex flex-col gap-2 justify-between rounded-3xl p-5 shadow-lg dark:shadow-[#157A6E]">
+    <div class="flex flex-col gap-2 justify-between rounded-3xl p-5 shadow-lg dark:shadow-[#157A6E]" :id="'id'+id">
         <RouterLink :to="{name: 'product', params: {id: id}}" class="lg:flex lg:flex-row gap-2">
             <img :src="img" class="max-h-40 md:max-w-50 rounded-xl" />
             <div class="flex flex-col w-full flex-1">
@@ -49,8 +49,8 @@ const open = ref(false)
             </div>
         </RouterLink>
         <div class="flex justify-between col-start-1 col-end-3">
-            <PrimaryButton type="button" text="Modifier" />
-            <DeleteButton @click="open = true" />
+            <PrimaryButton :id="'edit'+id" type="button" text="Modifier" />
+            <DeleteButton :id="'delete'+id" @click="open = true" />
         </div>
     </div>
 

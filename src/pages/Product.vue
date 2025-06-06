@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import ProductCard from '@/components/ProductCard.vue';
 import DangerAlert from '@/components/DangerAlert.vue';
 
-let successMessage = ref('');
+const successMessage = ref('');
 const props = defineProps({
     id: {
         type: Number,

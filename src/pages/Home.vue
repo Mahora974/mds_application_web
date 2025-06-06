@@ -8,7 +8,7 @@ import DangerAlert from '@/components/DangerAlert.vue';
 import SuccessAlert from '@/components/SuccessAlert.vue';
 
 const route = useRoute()
-let successMessage = ref('')
+const successMessage = ref('')
 if (route !== undefined){
     successMessage.value =  route.query.success
 }
@@ -44,11 +44,11 @@ onMounted(async () => {
             <DangerAlert v-for="error of errorMessages" :text="error" />
         </div>
         
-        <header class="sm:flex justify-between">
+        <header class="sm:flex justify-between" >
             <h1 class="text-xl text-(--color-heading) font-bold">Répertoire des produits</h1>
             <PrimaryButton type="button" text="Ajouter" action="add"/>
         </header>
-        <section class="md:grid md:grid-cols-3 md:gap-3">
+        <section class="md:grid md:grid-cols-3 md:gap-3" id="products">
             <ProductCard v-for="product in products" @delete="(message)=>successMessage = message" :key="product.id" :id="product.id" :img="product.image" :price="product.price" :label="product.title" :description="product.description" :category="product.category"/>
         </section>
     </div>
