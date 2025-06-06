@@ -13,10 +13,14 @@ defineProps({
         type: String,
         required: false,
     },
+    params: {
+        type: Object,
+        required: false,
+    },
 })
 </script>
 <template>
-  <router-link v-if="action" :to="{name: action}">
+<router-link v-if="action" :to="{name: action, params: params}">
     <button :type="type" class="cursor-pointer rounded-sm text-white bg-[#499F68] h-10 px-2" >
         <strong>{{text}}</strong>
     </button>

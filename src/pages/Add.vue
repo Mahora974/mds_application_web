@@ -59,7 +59,7 @@ const addProduct = async () => {
                     <label>Nom du produit</label>
                     <input v-model="product.label" id="label" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />
                 </div>
-                <div class="md-flex gap-2">
+                <div class="md:flex gap-2">
                     <div class="flex flex-col grow">    
                         <label>Prix</label>
                         <input v-model="product.price" type="number" class="rounded-xl p-3 inset-shadow-sm dark:inset-shadow-[#157A6E]" />

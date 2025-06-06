@@ -49,7 +49,7 @@ const open = ref(false)
             </div>
         </RouterLink>
         <div class="flex justify-between col-start-1 col-end-3">
-            <PrimaryButton :id="'edit'+id" type="button" text="Modifier" />
+            <PrimaryButton :id="'edit'+id" type="button" text="Modifier" action="edit" :params="{id:id}" />
             <DeleteButton :id="'delete'+id" @click="open = true" />
         </div>
     </div>
