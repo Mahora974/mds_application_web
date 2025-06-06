@@ -33,7 +33,7 @@ async function deleteProduct() {
 
 <template>
     <Transition name="modal">
-        <div v-if="show" class="modal-mask">
+        <div v-if="show" class="modal-mask" id="delete-popup">
             <div class="modal-wrapper">
                 <div class="modal-container rounded-3xl shadow-sm dark:shadow-[#157A6E] bg-(--color-background)">
                     <h1 class="line-clamp-2 overflow-hidden text-ellipsis text-(--color-heading) break-* text-lg">Suppression de {{ name }} </h1>
@@ -45,8 +45,8 @@ async function deleteProduct() {
                     </div>
 
                     <div class="flex justify-between col-start-1 col-end-3">
-                        <PrimaryButton text="Annuler" type="button" @click="$emit('close')"/>
-                        <DangerButton @click="deleteProduct" />
+                        <PrimaryButton id="cancel" text="Annuler" type="button" @click="$emit('close')"/>
+                        <DangerButton id="delete" @click="deleteProduct" />
                     </div>
                 </div>
             </div>
