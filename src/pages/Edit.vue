@@ -85,7 +85,7 @@ const editProduct = async () => {
                 </div>
             </div>
             <div class="md:flex gap-2">
-                <div class="w-1/6">
+                <div class="md:w-1/6 w-1/4 m-1">
                     <img :src="product.image" >
                 </div>
                 <div class="grow">
